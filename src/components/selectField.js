@@ -1,16 +1,15 @@
 import React from 'react'
 
-const selectField = () => {
-
+const selectField = (props) => {
+    const {languages} = props
 
     return (
         <div>
-            <label htmlFor="languages">Choose a language:</label>
-            <select defaultValue="Audi" id="languages">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="vw">VW</option>
-                <option value="audi">Audi</option>
+            <label htmlFor="languages">Choose a language: </label>
+            <select id="languages">
+                {languages.map((el) => {
+                    return <option value="language">{el.language + " " + el.name}</option>
+                })}
             </select> 
         </div>
     )

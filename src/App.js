@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import axios from "axios";
 
 // components
@@ -11,16 +11,21 @@ import './App.css';
 
 const App = () => {
 
+  const [languages, setLanguages] = useState([])
+
   useEffect(() => {
     axios
       .post(`https://api-free.deepl.com/v2/languages?auth_key=${process.env.REACT_APP_DEEPL_KEY}`)
       .then((res) => {
-        console.log("*** LANGUAGES ***", res);
+        const languages = res.data
+        setLanguages(languages)
+
+        console.log("*** LANGUAGES ***", languages);
       })
       .catch((err) => {
         console.log("Error is: ", err);
       });
-  })
+  }, [])
 
   return (
     <div className="App">
@@ -31,7 +36,7 @@ const App = () => {
         <TextArea></TextArea>
       </div>
       <div className="select-field">
-        <SelectField></SelectField>
+        <SelectField languages={languages}></SelectField>
       </div>
       <div className="submit-button">
         <SubmitButton></SubmitButton>
