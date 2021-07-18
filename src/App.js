@@ -12,11 +12,20 @@ const App = () => {
 
   const [languages, setLanguages] = useState([])
   const [selectedLanguage, setSelectedLanguage] = useState("")
+  const [textToTranslate, setTextToTranslate] = useState("")
 
   const handleChange = (event) => {
     event.persist();
     setSelectedLanguage(event.target.value)
   }
+
+  const handleInput = (event) => {
+    event.persist();
+    setTextToTranslate(event.target.value);
+  };
+
+  // console.log("*** SELECTED LANGUAGE ***", selectedLanguage)
+  // console.log("*** INPUT TEXT ***", textToTranslate)
 
   useEffect(() => {
     axios
@@ -41,7 +50,7 @@ const App = () => {
         <SelectField handleChange={handleChange} languages={languages}></SelectField>
       </div>
       <div className="text-area">
-        <TextArea></TextArea>
+        <TextArea handleInput={handleInput}></TextArea>
       </div>
     </div>
   );
