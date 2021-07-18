@@ -6,7 +6,8 @@ const TextArea = (props) => {
     return (
         <div>
             <div>
-            <textarea onChange={handleInput} name="translate_this" id="text-to-translate" cols="90" rows="20"></textarea>
+            <label htmlFor="text-to-translate"></label>
+            <textarea onChange={handleInput} name="translate_this" id="text-to-translate"></textarea>
             </div>
         </div>
     )

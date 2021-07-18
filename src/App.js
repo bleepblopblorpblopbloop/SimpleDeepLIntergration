@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react'
 import axios from "axios";
-// import { retrieveLanguages, sendInput } from './deeplAxios';
 
 // components
 import TextArea from "./components/textArea"
 import SelectField from "./components/selectField"
 import SubmitButton from "./components/submitButton"
+import TextDisplay from "./components/textDisplay"
 
 // styling
 import './App.css';
@@ -27,15 +27,12 @@ const App = () => {
     setTextToTranslate(event.target.value);
   };
 
-  // console.log("*** SELECTED LANGUAGE ***", selectedLanguage)
-  // console.log("*** INPUT TEXT ***", textToTranslate)
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
     if (selectedLanguage && textToTranslate) {
       axios
-        .post(`https://api-free.deepl.com/v2/translate?auth_key=${process.env.REACT_APP_DEEPL_KEY}&text=${textToTranslate}&target_lang=${selectedLanguage}&source_lang=en`)
+        .post(`https://api-free.deepl.com/v2/translate?auth_key=${process.env.REACT_APP_DEEPL_KEY}&text=${textToTranslate}&target_lang=${selectedLanguage}&source_lang=en&tag_handling=xml`)
         .then((res) => {
           console.log("*** TRANSLATION ***", res)
           if (res.status === 200) {
@@ -53,25 +50,12 @@ const App = () => {
     
   };
 
-  console.log("*** FINAL TRANSLATION ***", translation)
-
   useEffect(() => {
-    // retrieveLanguages()
-    // .then((res) => {
-    //     const languages = res.data
-    //     console.log("*** LANGUAGES ***", languages)
-    //     setLanguages(languages)
-    // })
-    // .catch((err) => {
-    //   console.log("Error is: ", err);
-    // });
     axios
       .post(`https://api-free.deepl.com/v2/languages?auth_key=${process.env.REACT_APP_DEEPL_KEY}`)
       .then((res) => {
         const languages = res.data
         setLanguages(languages)
-
-        console.log("*** LANGUAGES ***", languages);
       })
       .catch((err) => {
         console.log("Error is: ", err);
@@ -79,7 +63,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App">
+    <div className="app">
       <div>
         <h3>Simple DeepL API Integration</h3>
       </div>
@@ -91,6 +75,9 @@ const App = () => {
       </div>
       <div className="submit-button">
         <SubmitButton handleSubmit={handleSubmit}></SubmitButton>
+      </div>
+      <div>
+        <TextDisplay translation={translation}></TextDisplay>
       </div>
     </div>
   );
