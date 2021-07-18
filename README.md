@@ -1,4 +1,20 @@
+Project Name: 
+
+Simple DeepL API Integration
+
+Project Goal: 
+
+Construct a page which has a textarea field for writing English text, a language select field and a submit button. Whatever English text is submitted, the page should display a translation for that text in the language selected.
+
+*** IMPORTANT ***
+
+PLEASE ADD THE FOLLOWING VARIABLE NAME TO THE .ENV FILE, FOLLOWED BY YOUR DEEPL API KEY
+
+REACT_APP_DEEPL_KEY=
+
+
 # Getting Started with Create React App
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
