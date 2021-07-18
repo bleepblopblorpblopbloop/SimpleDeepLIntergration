@@ -1,9 +1,11 @@
 import React from 'react'
 
-const submitButton = () => {
+const submitButton = (props) => {
+    const {handleSubmit} = props
+
     return (
         <div>
-            <button type="submit">Submit</button>
+            <button type="submit" onClick={handleSubmit}>Submit</button>
         </div>
     )
 }
