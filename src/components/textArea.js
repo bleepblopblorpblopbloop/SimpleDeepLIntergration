@@ -9,7 +9,7 @@ const TextArea = (props) => {
             <div>
             <label htmlFor="text-to-translate"></label>
             {/* this text area is for user inputted text that requires translation */}
-            {/* the onChnage triggers the handleInput function location in App.js */}
+            {/* the onChange triggers the handleInput function located in App.js */}
             <textarea onChange={handleInput} name="translate_this" id="text-to-translate"></textarea>
             </div>
         </div>

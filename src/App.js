@@ -47,10 +47,10 @@ const App = () => {
         .catch((err) => {
           console.log("Error is: ", err);
         });
-    // if the correct data is not provided the user is promptred for mre info
+    // if the correct data is not provided the user is prompted for more info
     } else if (selectedLanguage && !textToTranslate) {
         setTranslation("Please input some text to translate.")
-    // if the correct data is not provided the user is promptred for mre info
+    // if the correct data is not provided the user is prompted for more info
     } else if (!selectedLanguage && textToTranslate) {
         setTranslation("Please choose a language.")
     }

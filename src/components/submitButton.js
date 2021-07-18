@@ -6,7 +6,7 @@ const submitButton = (props) => {
 
     return (
         <div>
-            {/* this button triggers the handleSubmit function in App.js */}
+            {/* this onClick triggers the handleSubmit function in App.js */}
             <button type="submit" onClick={handleSubmit}>Submit</button>
         </div>
     )
