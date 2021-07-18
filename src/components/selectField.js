@@ -1,14 +1,14 @@
 import React from 'react'
 
 const selectField = (props) => {
-    const {languages} = props
+    const {languages, handleChange} = props
 
     return (
         <div>
             <label htmlFor="languages">Choose a language: </label>
-            <select id="languages">
-                {languages.map((el) => {
-                    return <option value="language">{el.language + " " + el.name}</option>
+            <select id="languages" onChange={handleChange}>
+                {languages.map((el, i) => {
+                    return <option  key={i} value={el.language} >{el.language + " " + el.name}</option>
                 })}
             </select> 
         </div>

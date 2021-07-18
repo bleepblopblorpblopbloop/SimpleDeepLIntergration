@@ -4,7 +4,6 @@ import axios from "axios";
 // components
 import TextArea from "./components/textArea"
 import SelectField from "./components/selectField"
-import SubmitButton from "./components/submitButton"
 
 // styling
 import './App.css';
@@ -12,6 +11,12 @@ import './App.css';
 const App = () => {
 
   const [languages, setLanguages] = useState([])
+  const [selectedLanguage, setSelectedLanguage] = useState("")
+
+  const handleChange = (event) => {
+    event.persist();
+    setSelectedLanguage(event.target.value)
+  }
 
   useEffect(() => {
     axios
@@ -32,14 +37,11 @@ const App = () => {
       <div>
         <h3>Simple DeepL API Integration</h3>
       </div>
+      <div className="select-field">
+        <SelectField handleChange={handleChange} languages={languages}></SelectField>
+      </div>
       <div className="text-area">
         <TextArea></TextArea>
-      </div>
-      <div className="select-field">
-        <SelectField languages={languages}></SelectField>
-      </div>
-      <div className="submit-button">
-        <SubmitButton></SubmitButton>
       </div>
     </div>
   );
